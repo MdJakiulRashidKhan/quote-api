@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote API</title>
+</head>
+<body>
+    <header>
+        <h1>Tap the button to see new quote</h1>
+    </header>
+    <main>
+        <section>
+            <blockquote id="quote"></blockquote>
+            <button onclick="loadQuote()">New Quote</button>
+        </section>
+    </main>
+    <script>
+        const loadQuote = ()=>{
+            fetch('https://api.kanye.rest/')
+            .then(res =>res.json())
+            .then(data =>showQuote(data))
+        };
+        const showQuote = (data)=>{
+                const quote = document.getElementById('quote');
+                quote.innerText = data.quote;       
+        }
+        loadQuote();
+    </script>
+</body>
+</html>
